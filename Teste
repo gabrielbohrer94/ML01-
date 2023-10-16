@@ -1,1 +1,18 @@
-
+ "source": [
+    "from sklearn.neighbors import KNeighborsClassifier\n",
+    "\n",
+    "score = np.array([])\n",
+    "# Create KNN classifier\n",
+    "for i in range(1,100):\n",
+    "    knn = KNeighborsClassifier(n_neighbors = i)\n",
+    "    knn.fit(X_train,y_train)\n",
+    "    score = np.append(score,knn.score(X_test, y_test))\n",
+    "\n",
+    "# Plotando o gráfico de K x Score\n",
+    "plt.figure(figsize=(15, 5))\n",
+    "plt.plot(range(1,100),score,color='blue', linestyle='dashed', marker='o',\n",
+    "         markerfacecolor='red', markersize=10)\n",
+    "plt.title('Score vs. K Value')\n",
+    "plt.xlabel('K')\n",
+    "plt.ylabel('Score')\n"
+   ]
